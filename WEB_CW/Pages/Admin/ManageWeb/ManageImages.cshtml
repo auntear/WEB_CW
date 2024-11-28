@@ -1,0 +1,59 @@
+﻿@page
+@model WEB_CW.Pages.Admin.ManageWeb.ManageImagesModel
+@{
+}
+<div class="container mt-5 text-center">
+    <h1 class="mb-4">Upload Image</h1>
+
+    <!-- Display Validation Errors -->
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger">
+            <ul>
+                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <li>@error.ErrorMessage</li>
+                }
+            </ul>
+        </div>
+    }
+
+    <!-- Upload Form -->
+    <form method="post" enctype="multipart/form-data" asp-page-handler="UploadImage">
+        <div class="mb-3">
+            <label for="file" class="form-label">Choose Image</label>
+            <input type="file" class="form-control" id="file" name="file" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+
+    <div class="container mt-5">
+        <h1 class="mt-4">View Image</h1>
+        <div class="row">
+            @if (Model.ImageList != null && Model.ImageList.Any())
+            {
+                @foreach (var image in Model.ImageList)
+                {
+                    <div class="col-3">
+                        <div class="card position-relative">
+                            <!-- Delete button -->
+                            <form method="post" asp-page-handler="DeleteImage" asp-route-imageId="@image.Id" class="position-absolute top-0 end-0 m-2">
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                            <img src="data:image/jpeg;base64,@image.Base64Image" class="card-img-top" alt="@image.Name">
+                            <div class="card-body">
+                                <h5 class="card-title">@image.Name</h5>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-12">
+                    <p>No images available.</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>

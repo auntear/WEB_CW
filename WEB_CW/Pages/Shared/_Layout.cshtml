@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WEB_CW</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WEB_CW.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light border-bottom box-shadow mb-3 sticky-top">
+            <div class="container-fluid"> @* เต็มจอ *@
+            @* <div class="container"> *@
+                @* <a class="navbar-brand" asp-area="" asp-page="/Index">ChaiwanHospital</a> *@              
+                <img src="~/img/logoweb.png" alt="" style="width:15%">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-primary" asp-area="" asp-page="/Index">หน้าแรก</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-primary" asp-area="" asp-page="/Privacy">ข่าวประชาสัมพันธ์</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-primary" asp-area="" asp-page="/Privacy">ระบบสำนักงาน</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-primary dropdown-toggle" data-bs-toggle="dropdown" asp-area="" asp-page="/Privacy">หน่วยงานภายใน</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item text-primary" asp-area="" asp-page="/Privacy">รพ.สต.1</a></li>
+                                <li><a class="dropdown-item text-primary" asp-area="" asp-page="/Privacy">รพ.สต.2</a></li>
+                                <li><a class="dropdown-item text-primary" asp-area="" asp-page="/Privacy">รพ.สต.3</a></li>
+                                <li><a class="dropdown-item text-primary" asp-area="" asp-page="/Privacy">รพ.สต.4</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-primary" asp-area="" asp-page="/Privacy">เกี่ยวกับเรา</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-primary" asp-area="" asp-page="/Privacy">เข้าสู่เว็บบอร์ด</a>
+                        </li>                      
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    @* <div class="container-fluid"> *@ @* เต็มจอ *@
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; BY AUNTEAR @* - <a asp-area="" asp-page="/Privacy">Privacy</a> *@
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
